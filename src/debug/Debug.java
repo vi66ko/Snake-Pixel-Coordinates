@@ -34,7 +34,18 @@ public class Debug {
             }
         }
     }
-   
+    
+       /**
+     * Display a fatal message if the assertion fails
+     * @param ok true if all is ok
+     * @param fmt The same as printf etc.
+     * @param args The parameters for the fmt
+     */
+    public static void assertTrue(boolean ok, String fmt, Object... args){
+        if(!ok){
+            error("Assertion failed: " + fmt, args)
+        }
+    }
 
     /**
      * Display a fatal message
