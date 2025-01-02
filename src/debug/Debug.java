@@ -14,9 +14,24 @@ public class Debug {
      * @param state Debugging true || false
      * @return The old state
      */
-    public static synchronized boolean setState(boolean state) {
-        boolean oldState = debug;
-        debug = state;
-        return oldState;
+    public static synchronized boolean setState(boolean assert state) {
+            boolean oldState = debug;
+            debug = state;
+            return oldState;
+        }
+    
+        /**
+         * Display text for debugging
+         * @param fmt The same as printf etc;
+         * @param args The parameters for the fmt
+         * @return void
+     */
+    public static void trace(String fmt, Object... args) {
+        if(debug){
+            synchronized( Debug.class){
+                System.out.printf(fmt, args);
+                System.out.println();
+            }
+        }
     }
 }
