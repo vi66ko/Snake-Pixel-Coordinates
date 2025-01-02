@@ -34,4 +34,17 @@ public class Debug {
             }
         }
     }
+   
+
+    /**
+     * Display a fatal message
+     * @param fmt The same as printf etc.
+     * @param args The parameters for the fmt
+     * @return void
+     */
+    public static synchronized void error(String fmt, Object... args){
+        System.out.printf(fmt, args);
+        System.out.println();
+    }
+
 }
