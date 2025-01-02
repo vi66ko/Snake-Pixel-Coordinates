@@ -14,7 +14,7 @@ public class Debug {
      * @param state Debugging true || false
      * @return The old state
      */
-    public static synchronized boolean setState(boolean assert state) {
+    public static synchronized boolean setState(boolean state) {
             boolean oldState = debug;
             debug = state;
             return oldState;
@@ -34,7 +34,7 @@ public class Debug {
             }
         }
     }
-    
+
        /**
      * Display a fatal message if the assertion fails
      * @param ok true if all is ok
