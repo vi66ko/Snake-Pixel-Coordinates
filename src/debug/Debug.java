@@ -43,7 +43,7 @@ public class Debug {
      */
     public static void assertTrue(boolean ok, String fmt, Object... args){
         if(!ok){
-            error("Assertion failed: " + fmt, args)
+            error("Assertion failed: " + fmt, args);
         }
     }
 
