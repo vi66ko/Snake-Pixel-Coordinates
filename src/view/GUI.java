@@ -39,7 +39,7 @@ public class GUI implements EventHandler<KeyEvent> {
         this.canvas = new Canvas(playableArea.getWidth(), playableArea.getHeight());
         this.pane.getChildren().add(canvas);
 
-        this.scene = new Scene(pane);
+        this.scene = new Scene(pane, playableArea.getWidth(), playableArea.getHeight() + 100);
         this.scene.getStylesheets().add("./style.css");
         this.scene.setOnKeyPressed(this);
 
