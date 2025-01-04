@@ -9,6 +9,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Label;
+
+
 
 import models.PlayableArea;
 import controller.Controller;
@@ -55,7 +58,6 @@ public class GUI implements EventHandler<KeyEvent> {
         controller.userKeyInput(event);
     }
 
-
     public void drawGrid(int size){
         Group grid = new Group();
         
@@ -69,5 +71,12 @@ public class GUI implements EventHandler<KeyEvent> {
             grid.getChildren().add(vertical);
         }
         this.pane.getChildren().add(grid);
+    }
+    public void drawScores(int scores){
+        Label label = new Label("Score: " + scores);
+        label.setId("info-text");
+        label.setTranslateX(20);
+        label.setTranslateY(10);
+        this.pane.getChildren().add(label);
     }
 }
