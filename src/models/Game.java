@@ -17,5 +17,6 @@ public class Game {
         this.controller = new Controller(this); // create the controller and passing the game instance
         this.gui = new GUI(primaryStage, this.playableArea, this.controller);
 
+        this.gui.drawGrid(50);
     }
 }

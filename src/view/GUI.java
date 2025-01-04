@@ -3,13 +3,14 @@ package view;
 
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import models.PlayableArea;
 import javafx.scene.Scene;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.canvas.Canvas;
 
-
+import models.PlayableArea;
 import controller.Controller;
 import debug.Debug;
 
@@ -23,7 +24,7 @@ public class GUI implements EventHandler<KeyEvent> {
     private Scene scene;
     private Pane pane;
     private Canvas canvas;
-
+    private PlayableArea playableArea;
     
 
 
@@ -31,6 +32,7 @@ public class GUI implements EventHandler<KeyEvent> {
         Debug.trace("GUI::<constructor>");
         this.controller = controller;
         this.primaryStage = primaryStage;
+        this.playableArea = playableArea;
 
         this.pane = new Pane();
         this.pane.setId("snake-pane");
@@ -51,5 +53,21 @@ public class GUI implements EventHandler<KeyEvent> {
 
     public void handle(KeyEvent event) {
         controller.userKeyInput(event);
+    }
+
+
+    public void drawGrid(int size){
+        Group grid = new Group();
+        
+        for (int i = 0; i <= this.playableArea.getWidth() / size; i++) {
+            Line horizontal = new Line(0, i * size + 50, this.playableArea.getWidth(), i * size + 50);
+            Line vertical = new Line(i * size, 50, i * size, this.playableArea.getHeight() + 50);
+            
+            horizontal.setStroke(Color.rgb(150, 150, 150,  0.7));
+            vertical.setStroke(Color.rgb(150, 150, 150,  0.7));
+            grid.getChildren().add(horizontal);
+            grid.getChildren().add(vertical);
+        }
+        this.pane.getChildren().add(grid);
     }
 }
