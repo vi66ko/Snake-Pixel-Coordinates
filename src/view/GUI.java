@@ -34,12 +34,13 @@ public class GUI implements EventHandler<KeyEvent> {
 
         this.pane = new Pane();
         this.pane.setId("snake-pane");
-        this.pane.setStyle("./style.css");
+        
 
         this.canvas = new Canvas(playableArea.getWidth(), playableArea.getHeight());
         this.pane.getChildren().add(canvas);
 
         this.scene = new Scene(pane);
+        this.scene.getStylesheets().add("./style.css");
         this.scene.setOnKeyPressed(this);
 
         this.primaryStage.setTitle("Snake Pixel Coordinate");
