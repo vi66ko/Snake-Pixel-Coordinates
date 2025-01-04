@@ -1,0 +1,8 @@
+#snake-pane {
+  -fx-background-color: rgb(50, 55, 50);
+}
+
+#info-text {
+  -fx-font-size: 20px;
+  -fx-text-fill: aquamarine;
+}
