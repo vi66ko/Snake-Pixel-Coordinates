@@ -15,7 +15,7 @@
       "name": "App",
       "request": "launch",
       "mainClass": "App",
-      "projectName": "Snake Pixel cordinate_4890f324",
+      "projectName": "Snake Pixel Coordinate_4890f324",
       "vmArgs": "--module-path \"C:\\Program Files\\Java\\javafx-sdk-23.0.1\\lib\" --add-modules javafx.controls,javafx.fxml"
     }
   ]
