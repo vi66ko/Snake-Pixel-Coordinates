@@ -12,8 +12,7 @@ public class Game {
 
     public Game(Stage primaryStage) {
         Debug.trace("Game::<constructor>");
-        this.controller = new Controller();
-
+        this.controller = new Controller(this); // create the controller and passing the game instance
         this.gui = new GUI(primaryStage, this.controller);
 
     }
