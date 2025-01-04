@@ -3,6 +3,7 @@ package view;
 
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import models.PlayableArea;
 import javafx.scene.Scene;
 import javafx.scene.Group;
 import javafx.scene.layout.Pane;
@@ -23,8 +24,10 @@ public class GUI implements EventHandler<KeyEvent> {
     private Pane pane;
     private Canvas canvas;
 
+    
 
-    public GUI(Stage primaryStage, Controller controller){
+
+    public GUI(Stage primaryStage, PlayableArea playableArea, Controller controller ){
         Debug.trace("GUI::<constructor>");
         this.controller = controller;
         this.primaryStage = primaryStage;
@@ -33,7 +36,7 @@ public class GUI implements EventHandler<KeyEvent> {
         this.pane.setId("snake-pane");
         this.pane.setStyle("./style.css");
 
-        this.canvas = new Canvas(400, 400);
+        this.canvas = new Canvas(playableArea.getWidth(), playableArea.getHeight());
         this.pane.getChildren().add(canvas);
 
         this.scene = new Scene(pane);
