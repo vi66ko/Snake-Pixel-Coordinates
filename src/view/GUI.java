@@ -27,8 +27,11 @@ public class GUI implements EventHandler<KeyEvent> {
     private Scene scene;
     private Pane pane;
     private Canvas canvas;
-    private PlayableArea playableArea;
     
+    // Game details    
+    private PlayableArea playableArea;
+    private Label scores;
+
 
 
     public GUI(Stage primaryStage, PlayableArea playableArea, Controller controller ){
@@ -48,6 +51,8 @@ public class GUI implements EventHandler<KeyEvent> {
         this.scene.getStylesheets().add("./style.css");
         this.scene.setOnKeyPressed(this);
 
+        this.gameSetup();
+
         this.primaryStage.setTitle("Snake Pixel Coordinate");
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
@@ -56,6 +61,9 @@ public class GUI implements EventHandler<KeyEvent> {
 
     public void handle(KeyEvent event) {
         controller.userKeyInput(event);
+    }
+    private void gameSetup(){
+        this.drawScores(0);
     }
 
     public void drawGrid(int size){
@@ -72,11 +80,14 @@ public class GUI implements EventHandler<KeyEvent> {
         }
         this.pane.getChildren().add(grid);
     }
-    public void drawScores(int scores){
-        Label label = new Label("Score: " + scores);
-        label.setId("info-text");
-        label.setTranslateX(20);
-        label.setTranslateY(10);
-        this.pane.getChildren().add(label);
+    public void drawScores(int value){
+        this.scores = new Label("Score: " + value);
+        this.scores.setId("info-text");
+        this.scores.setTranslateX(20);
+        this.scores.setTranslateY(10);
+        this.pane.getChildren().add(scores);
+    }
+    public void updateScores(int value){
+        this.scores.setText("Score: " + value);
     }
 }
