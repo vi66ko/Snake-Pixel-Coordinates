@@ -46,11 +46,11 @@ public class GameObject {
       this.posX = posX;
     }
 
-    public int getPostY() {
+    public int getPosY() {
       return this.postY;
     }
 
-    public void setPostY(int postY) {
+    public void setPosY(int postY) {
       this.postY = postY;
     }
 
