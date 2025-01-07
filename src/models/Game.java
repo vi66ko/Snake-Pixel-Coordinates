@@ -5,18 +5,34 @@ import javafx.stage.Stage;
 
 import view.GUI;
 import controller.Controller;
-
 public class Game {
     private GUI gui;
     private Controller controller;
     private PlayableArea playableArea;
+    private GameState gameState = GameState.PLAYING;
 
     public Game(Stage primaryStage) {
         Debug.trace("Game::<constructor>");
         this.playableArea = new PlayableArea(600, 600);
         this.controller = new Controller(this); // create the controller and passing the game instance
         this.gui = new GUI(primaryStage, this.playableArea, this.controller);
+        
+        
+        gameSetup();
+        
+        
+    }
+    public void GameLoop(){
+        try {
+            Debug.trace("Game::GameLoop: Game Loop Started");
+            while(!this.gameState.equals("Running")){
 
-        this.gui.drawGrid(50);
+            }
+        }
+    }
+
+    private void gameSetup(){
+        gui.drawGrid(100);
+        gui.drawScores(0);
     }
 }
