@@ -53,7 +53,9 @@ public class GameObject {
     public void setPosY(int postY) {
       this.postY = postY;
     }
-
+    public int getSize() {
+      return this.size;
+    }
     public void setSize(int size){
       this.size = size;
     }
