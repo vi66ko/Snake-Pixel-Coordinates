@@ -11,10 +11,9 @@ import javafx.scene.shape.Line;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
-
-
-
+import models.GameObject;
 import models.PlayableArea;
+import models.Snake;
 import controller.Controller;
 import debug.Debug;
 
@@ -96,5 +95,13 @@ public class GUI implements EventHandler<KeyEvent> {
     public void paintCanvas(){
         this.graphicsContext.setFill(playableArea.getBackground());
         this.graphicsContext.fillRect(0,0, playableArea.getWidth(), playableArea.getHeight());
+    }
+
+    public void drawSnake(Snake snake){
+        this.drawRectangularGameObject(snake);
+    }
+    public void drawRectangularGameObject(GameObject gameObject){
+        this.graphicsContext.setFill(gameObject.getColor());
+        this.graphicsContext.fillRect(gameObject.getPosX(), gameObject.getPosY(), gameObject.getWidth(), gameObject.getHeight());
     }
 }
