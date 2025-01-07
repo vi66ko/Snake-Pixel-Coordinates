@@ -15,6 +15,21 @@ public class Controller {
 
     public void userKeyInput(KeyEvent event){
         Debug.trace("Controller::userKeyInput = " + event.getCode());
+        switch (event.getCode()) {
+            case UP:
+                this.game.getSnake().moveUp();
+                break;
+            case RIGHT:
+                this.game.getSnake().moveRight();
+                break;
+            case DOWN:
+                this.game.getSnake().moveDown();
+                break;
+            case LEFT:
+                this.game.getSnake().moveLeft();
+            default:
+                break;
+        }
 
     }
 }
