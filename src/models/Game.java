@@ -25,9 +25,14 @@ public class Game {
     public void GameLoop(){
         try {
             Debug.trace("Game::GameLoop: Game Loop Started");
-            while(!this.gameState.equals("Running")){
-
+            while(gameState == GameState.PLAYING){
+                // updating the graphics
+                // updating the models
+                Thread.sleep( 100);
             }
+            Debug.trace("Game::GameLoop: Game Loop Stopped");
+        } catch (Exception e){
+            Debug.trace("Game::runAsSeparateThread Error: " + e.getMessage());
         }
     }
 
@@ -35,4 +40,6 @@ public class Game {
         gui.drawGrid(100);
         gui.drawScores(0);
     }
+
+    
 }

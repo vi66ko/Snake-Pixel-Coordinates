@@ -9,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 
 
@@ -27,6 +28,7 @@ public class GUI implements EventHandler<KeyEvent> {
     private Scene scene;
     private Pane pane;
     private Canvas canvas;
+    private GraphicsContext graphicsContext;
     
     // Game details    
     private PlayableArea playableArea;
@@ -39,19 +41,22 @@ public class GUI implements EventHandler<KeyEvent> {
         this.controller = controller;
         this.primaryStage = primaryStage;
         this.playableArea = playableArea;
-
         this.pane = new Pane();
         this.pane.setId("snake-pane");
         
-
+        
         this.canvas = new Canvas(playableArea.getWidth(), playableArea.getHeight());
+        this.canvas.setLayoutY(50);
+        this.graphicsContext = canvas.getGraphicsContext2D();
+
+        this.paintCanvas();
+
         this.pane.getChildren().add(canvas);
 
         this.scene = new Scene(pane, playableArea.getWidth(), playableArea.getHeight() + 100);
         this.scene.getStylesheets().add("./style.css");
         this.scene.setOnKeyPressed(this);
 
-        this.gameSetup();
 
         this.primaryStage.setTitle("Snake Pixel Coordinate");
         this.primaryStage.setScene(scene);
@@ -62,9 +67,7 @@ public class GUI implements EventHandler<KeyEvent> {
     public void handle(KeyEvent event) {
         controller.userKeyInput(event);
     }
-    private void gameSetup(){
-        this.drawScores(0);
-    }
+
 
     public void drawGrid(int size){
         Group grid = new Group();
@@ -89,5 +92,9 @@ public class GUI implements EventHandler<KeyEvent> {
     }
     public void updateScores(int value){
         this.scores.setText("Score: " + value);
+    }
+    public void paintCanvas(){
+        this.graphicsContext.setFill(playableArea.getBackground());
+        this.graphicsContext.fillRect(0,0, playableArea.getWidth(), playableArea.getHeight());
     }
 }
