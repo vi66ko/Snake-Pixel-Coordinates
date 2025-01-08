@@ -11,6 +11,8 @@ import javafx.scene.shape.Line;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+
+import models.Food;
 import models.GameObject;
 import models.PlayableArea;
 import models.Snake;
@@ -32,7 +34,7 @@ public class GUI implements EventHandler<KeyEvent> {
     // Game details    
     private PlayableArea playableArea;
     private Label scores;
-
+    private Label coordinates;
 
 
     public GUI(Stage primaryStage, PlayableArea playableArea, Controller controller ){
@@ -94,14 +96,32 @@ public class GUI implements EventHandler<KeyEvent> {
     }
     public void paintCanvas(){
         this.graphicsContext.setFill(playableArea.getBackground());
-        this.graphicsContext.fillRect(0,0, playableArea.getWidth(), playableArea.getHeight());
+        this.graphicsContext.fillRect(playableArea.getPosX(), playableArea.getPosY(), playableArea.getWidth(), playableArea.getHeight());
     }
 
     public void drawSnake(Snake snake){
         this.drawRectangularGameObject(snake);
     }
+    public void drawFood(Food food){
+        this.drawRectangularGameObject(food);
+    }
     public void drawRectangularGameObject(GameObject gameObject){
         this.graphicsContext.setFill(gameObject.getColor());
-        this.graphicsContext.fillRect(gameObject.getPosX(), gameObject.getPosY(), gameObject.getWidth(), gameObject.getHeight());
+        this.graphicsContext.fillRect(gameObject.getPosX() * gameObject.getSize(), gameObject.getPosY() * gameObject.getSize(), gameObject.getWidth(), gameObject.getHeight());
     }
+
+    public void drawCoordinates(GameObject gameObject){
+        Debug.trace("drawCoordinates: is running");
+        this.coordinates = new Label("Coordinates:                 X = " + gameObject.getPosX() + "       Y = "+ gameObject.getPosY() );
+        this.coordinates.setId("coordinates");
+        this.coordinates.setTranslateX(100);
+        Debug.trace("PlayableArea: " + playableArea.getHeight());
+        this.coordinates.setTranslateY(50 + this.playableArea.getHeight() + 10);
+        this.pane.getChildren().add(this.coordinates);
+    }
+    public void updateCoordinates(GameObject gameObject){
+        this.coordinates.setText("Coordinates:                 X = " + gameObject.getPosX() + "       Y = "+ gameObject.getPosY() );
+;
+    }
+
 }
