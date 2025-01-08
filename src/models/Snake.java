@@ -4,8 +4,9 @@ import javafx.scene.paint.Color;
 
 public class Snake extends GameObject{
 
-    public Snake( int size) {
-        super(size, Color.rgb(146, 255, 127));
+    public Snake( int size, PlayableArea playableArea) {
+        super(size, Color.rgb(146, 255, 127), playableArea);
+        this.setRandomPos();
     }
     public void move(PlayableArea playableArea) {
         this.setPos( this.getPosX() + this.getVelocityX(), this.getPosY() + this.getVelocityY());
